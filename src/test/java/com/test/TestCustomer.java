@@ -46,6 +46,8 @@ public class TestCustomer {
 		
 	}
 	
+	
+	
 	 @AfterAll
 	    static void close() {
 	        JpaUtil util = JpaUtil.getInstance();

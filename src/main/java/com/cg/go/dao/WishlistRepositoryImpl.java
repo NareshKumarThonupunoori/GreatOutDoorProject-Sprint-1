@@ -18,13 +18,11 @@ public class WishlistRepositoryImpl {
      this.entityManager=entityManager;
 	}
 	public List<WishlistItemEntity> findAllItems(){
-		List<WishlistItemEntity> list=new ArrayList<WishlistItemEntity>();
-		list=entityManager.createQuery("select * from WishlistItemEntity").getResultList();
+		List<WishlistItemEntity> list=entityManager.createQuery("from WishlistItemEntity").getResultList();
 		return list;
 	}
 	public List<WishlistItemEntity> findWishlist(String userId){
-		List<WishlistItemEntity> list=new ArrayList<WishlistItemEntity>();
-		list=entityManager.createQuery("select * from WishlistItemEntity where userId='userId'").setParameter("userId", userId).getResultList();
+		List<WishlistItemEntity> list=entityManager.createQuery("select * from WishlistItemEntity where userId='userId'").setParameter("userId", userId).getResultList();
 		return list;
 	}
 
