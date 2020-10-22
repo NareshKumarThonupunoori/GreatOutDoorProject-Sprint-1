@@ -15,12 +15,11 @@ public class CartRepositoryImpl implements ICartRepository{
      this.entityManager=entityManager;
 	}
 	public List<CartItemEntity> findCartlist(String userId){
-		List<CartItemEntity> list=new ArrayList<CartItemEntity>();
-		list=entityManager.createQuery(" from CartItemEntity where userId=:userId",CartItemEntity.class).setParameter("userId", userId).getResultList();
+		List<CartItemEntity> list=entityManager.createQuery(" from CartItemEntity where userId=:userId",CartItemEntity.class).setParameter("userId", userId).getResultList();
 		return list;
 	}
 	public CartItemEntity findCartItem(String productId, String userId) {
-	//ToDo	
+		//ToDo
 		return null;
 	}
 	public CartItemEntity addCart(CartItemEntity cartItemEntity) throws CartException{

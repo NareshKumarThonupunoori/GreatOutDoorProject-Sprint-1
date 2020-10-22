@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Objects;
 
 @Entity
-//@NamedQuery(query="select o from CartItemEntity o where o.userId",name="find CartItemEntity by userId")
 public class CartItemEntity {
 	@Id
 	private long cartId;

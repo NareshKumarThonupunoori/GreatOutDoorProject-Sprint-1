@@ -10,11 +10,15 @@ public class JpaUtil {
 
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("MyPU");
 	EntityManager entityManager = factory.createEntityManager();
+	private Set<EntityManager> entityManagers = new HashSet<>();
 	EntityTransaction entityTransaction = entityManager.getTransaction();
 	private JpaUtil() {
 
 	}
-
+	private static JpaUtil instance = new JpaUtil();
+	public static JpaUtil getInstance() {
+		return instance;
+	}
 	public static EntityManager getEntityManager() {
 		return new JpaUtil().entityManager;
 	}
@@ -22,7 +26,13 @@ public class JpaUtil {
 	public static EntityTransaction getTransaction() {
 		return new JpaUtil().entityTransaction;
 	}
-
+	
+	public void close() {
+		for (EntityManager manager : entityManagers) {
+			manager.close();
+		}
+		factory.close();
+	}
 }
 
 
