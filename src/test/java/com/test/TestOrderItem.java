@@ -33,8 +33,8 @@ public class TestOrderItem {
 		}
 		OrderEntity orderEntity=new OrderEntity("5","70",products,5,10l,localDate,dispatchDate);
 		orderService.addOrder(orderEntity);
-		Assertions.assertEquals(5,orderEntity.getOrderId());
-		Assertions.assertEquals(70,orderEntity.getOrderId());
+		Assertions.assertEquals("5",orderEntity.getOrderId());
+		Assertions.assertEquals("70",orderEntity.getUserId());
 
 	}
 }

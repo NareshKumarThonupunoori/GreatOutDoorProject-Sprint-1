@@ -32,6 +32,6 @@ public class TestCartItem {
 		CartItemEntity cartItemEntity=new CartItemEntity(456,"70",products,507,10);
 		CartItemEntity cartItem=cartItemService.addCart(cartItemEntity);
 		Assertions.assertEquals(456,cartItem.getCartId());
-		
+		Assertions.assertEquals(products,cartItem.getProducts());
 	}
 }
