@@ -16,7 +16,7 @@ public class CartRepositoryImpl implements ICartRepository{
 	}
 	public List<CartItemEntity> findCartlist(String userId){
 		List<CartItemEntity> list=new ArrayList<CartItemEntity>();
-		list=entityManager.createQuery("select a from cartitementity a where userId='userId'",CartItemEntity.class).setParameter("userId", userId).getResultList();
+		list=entityManager.createQuery(" from CartItemEntity where userId=:userId",CartItemEntity.class).setParameter("userId", userId).getResultList();
 		return list;
 	}
 	public CartItemEntity findCartItem(String productId, String userId) {

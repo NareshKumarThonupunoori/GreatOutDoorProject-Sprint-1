@@ -39,10 +39,9 @@ public class ProductRepositoryImpl implements IProductRepository{
 		if(productEntity==null) {
 			throw new ProductException("productEntity not found");
 		}
-		else {
-				entityManager.persist(productEntity);
-				return productEntity;
-			}
+		entityManager.persist(productEntity);
+		return productEntity;
+		
 	}
 
 	public ProductEntity updateProduct(ProductEntity productEntity) throws ProductException{

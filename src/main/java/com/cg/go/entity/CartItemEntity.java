@@ -2,13 +2,13 @@ package com.cg.go.entity;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 
 import java.util.Map;
 import java.util.Objects;
 
 @Entity
+//@NamedQuery(query="select o from CartItemEntity o where o.userId",name="find CartItemEntity by userId")
 public class CartItemEntity {
 	@Id
 	private long cartId;
@@ -17,6 +17,9 @@ public class CartItemEntity {
 	private Map<ProductEntity, Integer> products ;// product ,quantity
 	private double cartTotalPrice;
 	private long totalQuantity;
+	
+	
+	
 	public CartItemEntity(long cartId, String userId, Map<ProductEntity, Integer> products, double cartTotalPrice,
 			long totalQuantity) {
 		this.cartId = cartId;

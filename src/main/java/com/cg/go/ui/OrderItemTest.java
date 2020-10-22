@@ -23,15 +23,17 @@ public class OrderItemTest {
 		LocalDate localDate = LocalDate.of( 2017 , 6 , 7 );
 		ProductEntity productEntity=new ProductEntity("123","Santoor",52.0,"mummy","orange","soap",2,"wipro","moisturizing soap");
 		List<ProductEntity> list=new ArrayList<ProductEntity>();
-		list=productService.findAllProducts();
-		Map<ProductEntity,Integer> products=new HashMap<ProductEntity,Integer>();
-		for(ProductEntity l:list) {
-			products.put(l,l.getQuantity());
-		}
-		OrderEntity orderEntity1=new OrderEntity("5","70",products,5,10l,localDate,dispatchDate);
-		OrderEntity orderEntity2=new OrderEntity("12","70",products,5,10l,localDate,dispatchDate);
+		
+		
 		try{
 			productService.addProduct(productEntity);
+			list=productService.findAllProducts();
+			Map<ProductEntity,Integer> products=new HashMap<ProductEntity,Integer>();
+			for(ProductEntity l:list) {
+				products.put(l,l.getQuantity());
+			}
+			OrderEntity orderEntity1=new OrderEntity("5","70",products,5,10l,localDate,dispatchDate);
+			OrderEntity orderEntity2=new OrderEntity("12","70",products,5,10l,localDate,dispatchDate);
 			orderService.addOrder(orderEntity1);
 			//orderService.deleteAllOrders();
 			orderService.addOrder(orderEntity2);
