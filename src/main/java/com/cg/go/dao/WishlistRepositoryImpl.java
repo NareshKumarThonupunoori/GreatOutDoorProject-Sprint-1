@@ -30,6 +30,7 @@ public class WishlistRepositoryImpl {
 
 	public WishlistItemEntity findWishlistItem(String productId, String userId) {
 		//ToDo
+		return null;
 	}
 	public void addProductToWishlist(String prodId,long wishlistID) {
 		//ToDo

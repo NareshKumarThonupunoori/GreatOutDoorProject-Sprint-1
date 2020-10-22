@@ -29,6 +29,7 @@ public class UserRepositoryImpl implements IUserRepository {
 	}
 	public Userdata logout(Userdata user) {
 		//ToDo
+		return null;
 	}
 
 }

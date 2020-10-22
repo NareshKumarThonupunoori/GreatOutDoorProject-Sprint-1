@@ -19,12 +19,12 @@ public class OrderRepositoryImpl implements IOrderRepository{
 	}
 	public List<OrderEntity> findOrdersByUserId(String userId){
 		List<OrderEntity> list=new ArrayList<OrderEntity>();
-		list=entityManager.createQuery("select * from OrderEntity where userId='userId'").setParameter("userId", userId).getResultList();
+		list=entityManager.createQuery("select a from OrderEntity a where userId='userId'",OrderEntity.class).setParameter("userId", userId).getResultList();
 		return list;
 	}
 	public List<OrderEntity> findAllOrders(){
 		List<OrderEntity> list=new ArrayList<OrderEntity>();
-		list=entityManager.createQuery("select * from OrderEntity").getResultList();
+		list=entityManager.createQuery("select a from OrderEntity a",OrderEntity.class).getResultList();
 		return list;
 	}
 	public OrderEntity addOrder(OrderEntity orderEntity) throws OrderException{	

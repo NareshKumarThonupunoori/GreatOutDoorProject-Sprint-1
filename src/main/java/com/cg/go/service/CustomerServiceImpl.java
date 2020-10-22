@@ -1,18 +1,19 @@
 package com.cg.go.service;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-
-import com.cg.go.dao.*;
+import com.cg.go.dao.CustomerRepositoryImpl;
+import com.cg.go.dao.ICustomerRepository;
 import com.cg.go.entity.Customer;
 import com.cg.go.util.*;
 
 public class CustomerServiceImpl implements ICustomerService{
 	EntityManager entityManager=JpaUtil.getEntityManager();
 	ICustomerRepository daoCustomer=new CustomerRepositoryImpl(entityManager);
+	
 	public List<Customer> getAllCustomers(){
+		
 		EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         List<Customer> list=new ArrayList<Customer>();
@@ -20,6 +21,7 @@ public class CustomerServiceImpl implements ICustomerService{
         transaction.commit();
         return list;
 	}
+	
 	public Customer addCustomer(Customer customer) {
 		EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();

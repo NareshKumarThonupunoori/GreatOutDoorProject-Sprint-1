@@ -11,7 +11,6 @@ public class JpaUtil {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("MyPU");
 	EntityManager entityManager = factory.createEntityManager();
 	EntityTransaction entityTransaction = entityManager.getTransaction();
-
 	private JpaUtil() {
 
 	}

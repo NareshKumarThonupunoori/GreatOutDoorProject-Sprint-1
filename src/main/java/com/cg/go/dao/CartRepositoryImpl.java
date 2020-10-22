@@ -16,7 +16,7 @@ public class CartRepositoryImpl implements ICartRepository{
 	}
 	public List<CartItemEntity> findCartlist(String userId){
 		List<CartItemEntity> list=new ArrayList<CartItemEntity>();
-		list=entityManager.createQuery("select * from cartitementity").getResultList();
+		list=entityManager.createQuery("select a from cartitementity a where userId='userId'",CartItemEntity.class).setParameter("userId", userId).getResultList();
 		return list;
 	}
 	public CartItemEntity findCartItem(String productId, String userId) {
@@ -24,9 +24,8 @@ public class CartRepositoryImpl implements ICartRepository{
 		return null;
 	}
 	public CartItemEntity addCart(CartItemEntity cartItemEntity) throws CartException{
-		CartItemEntity cartItem=entityManager.find(CartItemEntity.class,cartItemEntity.getCartId());
-		if(cartItem.equals(cartItemEntity)) {
-			throw new CartException("Already added into the cart");
+		if(cartItemEntity==null) {
+			throw new CartException("Not added into the cart due to incorrect input argument");
 		}
 		else {
 			entityManager.persist(cartItemEntity);
@@ -55,5 +54,12 @@ public class CartRepositoryImpl implements ICartRepository{
 
 	public void deleteCartlist(String userId) throws CartException{
 		//ToDo
+		if(userId==null) {
+			throw new CartException("Not found in the cart");
+		}
+		else {
+			CartItemEntity cartItemEntity=entityManager.find(CartItemEntity.class,userId);
+			entityManager.remove(cartItemEntity);
+		}
 	}
 }
