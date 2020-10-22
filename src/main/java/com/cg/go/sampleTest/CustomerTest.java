@@ -1,4 +1,4 @@
-package com.cg.go.ui;
+package com.cg.go.sampleTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,6 @@ public class CustomerTest {
 		customerService.addCustomer(customer2);
 		customerService.updateCustomer(customer2);
 		List<Customer> list=new ArrayList<Customer>();
-		
 		customerService.removeCustomer(customer1);
 		list=customerService.getAllCustomers();
 		Customer customer3=list.get(0);

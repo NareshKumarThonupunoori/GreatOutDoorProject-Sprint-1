@@ -1,4 +1,4 @@
-package com.cg.go.ui;
+package com.cg.go.sampleTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;

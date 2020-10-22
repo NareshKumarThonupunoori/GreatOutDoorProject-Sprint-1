@@ -3,6 +3,7 @@ package com.cg.go.dao;
 import java.util.*;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.cg.go.entity.CartItemEntity;
 import com.cg.go.entity.Customer;
@@ -57,8 +58,8 @@ public class CartRepositoryImpl implements ICartRepository{
 			throw new CartException("Not found in the cart");
 		}
 		else {
-			CartItemEntity cartItemEntity=entityManager.find(CartItemEntity.class,userId);
-			entityManager.remove(cartItemEntity);
+			Query query=entityManager.createQuery(" delete from CartItemEntity where userId=:userId",CartItemEntity.class).setParameter("userId", userId);
+			query.executeUpdate();
 		}
 	}
 }

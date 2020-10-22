@@ -1,4 +1,4 @@
-package com.cg.go.ui;
+package com.cg.go.sampleTest;
 
 public class ProductTest {
 	

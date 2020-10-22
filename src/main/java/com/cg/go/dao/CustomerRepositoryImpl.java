@@ -29,7 +29,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository{
 	
 	public Customer removeCustomer(Customer customer) {
 		entityManager.remove(customer);
-		return customer;
+		return null;
 	}
 	
 	public Customer viewCustomer(Customer customer) {

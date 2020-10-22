@@ -1,4 +1,4 @@
-package com.cg.go.ui;
+package com.cg.go.sampleTest;
 import com.cg.go.entity.Userdata;
 import com.cg.go.service.IUserService;
 import com.cg.go.service.UserServiceImpl;
