@@ -39,8 +39,7 @@ public class ProductRepositoryImpl implements IProductRepository{
 	}
 
 	public ProductEntity addProduct(ProductEntity productEntity) throws ProductException{
-		ProductEntity product=entityManager.find(ProductEntity.class,productEntity.getProductId());
-		if(product.equals(productEntity)) {
+		if(productEntity==null) {
 			throw new ProductException("productEntity already added/exists");
 		}
 		entityManager.persist(productEntity);

@@ -20,8 +20,7 @@ public class CartRepositoryImpl implements ICartRepository{
 	}
 	
 	public CartItemEntity addCart(CartItemEntity cartItemEntity) throws CartException{
-		CartItemEntity cartItem=entityManager.find(CartItemEntity.class,cartItemEntity.getCartId());
-		if(cartItem.equals(cartItemEntity)) {
+		if(cartItemEntity==null) {
 			throw new CartException("Could not add again because already added to cart");
 		}
 		else {
@@ -40,11 +39,12 @@ public class CartRepositoryImpl implements ICartRepository{
 		if(userId==null) {
 			throw new CartException("Not found in the cart");
 		}
-		else {
 			Query query=entityManager.createQuery(" delete from CartItemEntity where userId=:userId",CartItemEntity.class).setParameter("userId", userId);
 			query.executeUpdate();
-		}
 	}
+	
+	
+	
 	
 	public CartItemEntity findCartItem(String productId, String userId) {
 		//ToDo
