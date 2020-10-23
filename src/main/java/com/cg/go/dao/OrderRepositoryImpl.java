@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.*;
+import javax.persistence.Query;
 
-import com.cg.go.entity.Customer;
 import com.cg.go.entity.OrderEntity;
 import com.cg.go.exception.OrderException;
 

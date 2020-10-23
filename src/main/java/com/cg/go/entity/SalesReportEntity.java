@@ -3,7 +3,9 @@ import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 @Entity
+@NamedQuery(query="delete from SalesReportEntity s where s.salesReportId=:salesReportId",name="deleting salesreport")
 public class SalesReportEntity {
 	@Id
 	private long salesReportId;

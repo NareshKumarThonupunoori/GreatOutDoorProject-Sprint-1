@@ -1,5 +1,4 @@
 package com.cg.go.dao;
-
 import java.util.*;
 import javax.persistence.EntityManager;
 import com.cg.go.entity.Customer;
@@ -13,7 +12,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository{
 	
 	public List<Customer> getAllCustomers(){
 		List<Customer> list=new ArrayList<Customer>();
-		list=entityManager.createQuery("select c from Customer c",Customer.class).getResultList();
+		list=entityManager.createQuery("from Customer",Customer.class).getResultList();
 		return list;
 	}
 	

@@ -19,11 +19,14 @@ public class ProductRepositoryImpl implements IProductRepository{
 	public ProductRepositoryImpl(EntityManager entityManager){
      this.entityManager=entityManager;
 	}
+	
+	
 	public List<ProductEntity> findAllProducts(){
 		List<ProductEntity> list=new ArrayList<ProductEntity>();
 		list=entityManager.createQuery("select a from ProductEntity a",ProductEntity.class).getResultList();
 		return list;
 	}
+	
 	public ProductEntity findByProductId(String id) {
 		ProductEntity productEntity=entityManager.find(ProductEntity.class,id);
 		return productEntity;
@@ -31,13 +34,14 @@ public class ProductRepositoryImpl implements IProductRepository{
 
 	public List<ProductEntity> findByProductCategory(String productCategory){
 		List<ProductEntity> list=new ArrayList<ProductEntity>();
-		list=entityManager.createQuery("select a from ProductEntity a where category='productCategory'",ProductEntity.class).setParameter("productCategory",productCategory).getResultList();
+		list=entityManager.createQuery("select a from ProductEntity a where category=:'productCategory'",ProductEntity.class).setParameter("productCategory",productCategory).getResultList();
 		return list;
 	}
 
 	public ProductEntity addProduct(ProductEntity productEntity) throws ProductException{
-		if(productEntity==null) {
-			throw new ProductException("productEntity not found");
+		ProductEntity product=entityManager.find(ProductEntity.class,productEntity.getProductId());
+		if(product.equals(productEntity)) {
+			throw new ProductException("productEntity already added/exists");
 		}
 		entityManager.persist(productEntity);
 		return productEntity;
@@ -46,7 +50,7 @@ public class ProductRepositoryImpl implements IProductRepository{
 
 	public ProductEntity updateProduct(ProductEntity productEntity) throws ProductException{
 		if(productEntity==null) {
-			throw new ProductException("productEntity not found");
+			throw new ProductException("Invalid Input");
 		}
 		else {
 				entityManager.merge(productEntity);
@@ -62,11 +66,10 @@ public class ProductRepositoryImpl implements IProductRepository{
 	public void deleteByProductId(String id) throws ProductException{
 		ProductEntity productEntity=entityManager.find(ProductEntity.class,id);
 		if(productEntity==null) {
-			throw new ProductException("productEntity not found");
+			throw new ProductException("productEntity not found so cannot be deleted");
 		}
-		else {
-				entityManager.remove(productEntity);
-			}
+		entityManager.remove(productEntity);
+
 	}
 
 	public List<ProductEntity> search(String keyword){

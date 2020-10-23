@@ -11,7 +11,11 @@ public class SalesReportRepositoryImpl implements ISalesReportRepository{
      this.entityManager=entityManager;
 	}
 	public void updateProductReport(String productId,Integer quantity,double totalSale) {
-		SalesReportEntity salesReportEntity=entityManager.find(SalesReportEntity.class,productId);
+		SalesReportEntity salesReportEntity=(SalesReportEntity) entityManager.createQuery("select s from SalesReportEntity s ").getSingleResult();
+		if(salesReportEntity==null) {
+			entityManager.persist(new SalesReportEntity());
+		}
+			
 		entityManager.merge(salesReportEntity);
 		
 	}

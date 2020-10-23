@@ -2,17 +2,29 @@ package com.cg.go.entity;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 @Entity
+@NamedQuery(name = "Loggin in", query = "select c from Userdata c where c.userName = :username and c.userPassword=:password")
 public class Userdata {
-	@Id
+	
 	private String userName;
+	@Id
+	@GeneratedValue
 	private int userId;
 	private String userType;
+/*	private boolean loggedIn;
+	public boolean isLoggedIn() {select c from UserData c
+		return loggedIn;
+	}
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;}
+	*/
 	private String userPassword;
-	public Userdata(String userName, int userId, String userType, String userPassword) {
+	public Userdata(String userName, String userType, String userPassword) {
 		this.userName = userName;
-		this.userId = userId;
+		//this.userId = userId;
 		this.userType = userType;
 		this.userPassword = userPassword;
 	}
@@ -24,6 +36,7 @@ public class Userdata {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
 	public int getUserId() {
 		return userId;
 	}

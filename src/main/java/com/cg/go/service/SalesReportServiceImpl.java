@@ -6,9 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import com.cg.go.dao.*;
 import com.cg.go.util.JpaUtil;
-import com.cg.go.dao.ISalesReportRepository;
-import com.cg.go.dao.SalesReportRepositoryImpl;
 import com.cg.go.entity.SalesReportEntity;
 import com.cg.go.exception.SalesReportException;
 
@@ -54,7 +53,6 @@ public class SalesReportServiceImpl implements ISalesReportService{
 	    transaction.commit();
 		
 	}
-	
 
 	@Override
 	public void deleteSalesReportById(Long salesReportId) throws SalesReportException {
@@ -65,4 +63,5 @@ public class SalesReportServiceImpl implements ISalesReportService{
         transaction.commit();
 		
 	}
+
 }

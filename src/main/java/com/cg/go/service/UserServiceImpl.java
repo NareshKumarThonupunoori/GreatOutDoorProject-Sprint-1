@@ -11,6 +11,7 @@
 
 	public class UserServiceImpl implements IUserService {
 		EntityManager entityManager=JpaUtil.getEntityManager();
+		//IUserService daoUser=new UserServiceImpl(entityManager);
 		IUserRepository daoUser=new UserRepositoryImpl(entityManager);
 
 		public Userdata addUser(Userdata user) {
@@ -23,6 +24,7 @@
 		}
 
 		public Userdata loginUser(Userdata user) {
+			// TODO Auto-generated method stub
 			EntityTransaction transaction = entityManager.getTransaction();
 	        transaction.begin();
 	         user=daoUser.loginUser(user);
@@ -43,3 +45,5 @@
 	}
 
 		
+
+	

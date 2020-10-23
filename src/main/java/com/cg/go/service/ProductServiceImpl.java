@@ -21,8 +21,7 @@ public class ProductServiceImpl implements IProductService{
 	{
 		EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        List<ProductEntity> list=new ArrayList<ProductEntity>();
-        list=daoProduct.findAllProducts();
+        List<ProductEntity> list=daoProduct.findAllProducts();
         transaction.commit();
         return list;
           
@@ -41,8 +40,8 @@ public class ProductServiceImpl implements IProductService{
 	{
 		  EntityTransaction transaction = entityManager.getTransaction();
 	      transaction.begin();
-	        List<ProductEntity> list=(List<ProductEntity>) daoProduct.findByProductId(productCategory);
-	      transaction.commit();
+		  List<ProductEntity> list= daoProduct.findByProductCategory(productCategory);
+		  transaction.commit();
 		  //List<ProductEntity> productObject;
 		return list;
 		
@@ -57,15 +56,21 @@ public class ProductServiceImpl implements IProductService{
 		return productObject;
 	}
 
-	public ProductEntity updateProduct(ProductEntity productEntity) throws ProductException
+	public ProductEntity updateProduct(ProductEntity productEntity) 
 	{
 		EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        ProductEntity productObject=daoProduct.updateProduct(productEntity);
-        transaction.commit();
-		return productObject;
+        try {
+	        ProductEntity productObject=daoProduct.updateProduct(productEntity);
+	        transaction.commit();
+			return productObject;
+        }
+        catch(ProductException productException) {
+        	System.out.println(productException.getMessage());
+        	transaction.commit();
+        }
+        return new ProductEntity();//null
 	}
-
 	public void updateProductQuantity(Integer quantity,String productId)
 	{
 		EntityTransaction transaction = entityManager.getTransaction();

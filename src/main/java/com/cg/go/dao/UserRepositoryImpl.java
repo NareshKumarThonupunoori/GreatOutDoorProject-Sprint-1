@@ -1,3 +1,4 @@
+
 package com.cg.go.dao;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ public class UserRepositoryImpl implements IUserRepository {
 		return user;
 	}
 	public Userdata loginUser(Userdata u) {
+//		Userdata userdata = (Userdata) entityManager.createNamedQuery("Loggin in").setParameter("username", u.getUserName()).setParameter("password", u.getUserPassword()).getSingleResult();
 		Userdata userdata = entityManager.find(Userdata.class, u.getUserName());
 		if(userdata == null) {
 			return null;
