@@ -5,12 +5,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import com.cg.go.entity.Customer;
-import com.cg.go.entity.OrderEntity;
 import com.cg.go.entity.ProductEntity;
-import com.cg.go.entity.WishlistItemEntity;
 import com.cg.go.exception.ProductException;
-import com.cg.go.exception.WishlistException;
 
 public class ProductRepositoryImpl implements IProductRepository{
 

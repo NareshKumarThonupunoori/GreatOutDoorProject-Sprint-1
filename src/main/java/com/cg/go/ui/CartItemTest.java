@@ -1,6 +1,5 @@
-package com.cg.go.sampleTest;
+package com.cg.go.ui;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,15 +23,15 @@ public class CartItemTest {
 			products.put(l,l.getQuantity());
 		}
 		System.out.println(products+"Intial Products");
-		CartItemEntity cartItemEntity1=new CartItemEntity(456,"70",products,507,10);
-		CartItemEntity cartItemEntity2=new CartItemEntity(762,"79",products,549,7);
+		CartItemEntity firstCartItemEntity=new CartItemEntity(456,"70",products,507,10);
+		CartItemEntity secondCartItemEntity=new CartItemEntity(762,"79",products,549,7);
 		
-		CartItemService.addCart(cartItemEntity1);
-		CartItemService.addCart(cartItemEntity2);
-		List<CartItemEntity> list1=CartItemService.findCartlist("70");
-		System.out.println(list1.get(0).getCartId());
-		
-		System.out.println(cartItemEntity1.getProducts());
+		CartItemService.addCart(firstCartItemEntity);
+		CartItemService.addCart(secondCartItemEntity);
+		//List<CartItemEntity> list1=CartItemService.findCartlist("78");
+		//System.out.println(list1.get(0).getCartId());
+		CartItemService.deleteCartlist(null);
+		System.out.println(firstCartItemEntity.getProducts());
 		System.out.println("Added Successfully");
 		
 	}
